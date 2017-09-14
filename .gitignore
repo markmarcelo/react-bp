@@ -1,0 +1,19 @@
+# Dependency directory
+node_modules
+
+# OSX
+.DS_Store
+Thumbs.db
+
+# App
+dist
+dist/*bundle*
+*.map
+
+# Logs
+logs
+*.log
+npm-debug.log.*
+
+#webstorm meta
+.idea
