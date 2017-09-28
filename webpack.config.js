@@ -1,6 +1,34 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+
+const cssProdConfig = ExtractTextWebpackPlugin.extract({
+  use: [
+    {
+      loader: 'css-loader',
+      options: {
+        modules: true
+      }
+    },
+    'postcss-loader',
+    'sass-loader'
+  ],
+  fallback: 'style-loader'
+});
+
+const cssDevConfig = [
+  'style-loader',
+  {
+    loader: 'css-loader',
+    options: {
+      modules: true
+    }
+  },
+  'sass-loader',
+  'postcss-loader'
+];
+
+const cssConfig = process.env.NODE_ENV === 'development' ? cssDevConfig : cssProdConfig;
 
 const config = {
   context: __dirname,
@@ -29,17 +57,7 @@ const config = {
       {
         test: /(\.css|\.sass|\.scss)$/,
         exclude: /node_modules/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true
-            }
-          },
-          'postcss-loader',
-          'sass-loader'
-        ]
+        use: cssConfig
       },
       {
         enforce: 'pre',
@@ -56,16 +74,12 @@ const config = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
-    new ExtractTextPlugin({
+    new ExtractTextWebpackPlugin({
       filename: 'styles.css',
       disable: !process.env.NODE_ENV === 'development',
       allChunks: true
     })
   ]
 };
-
-if (process.env.NODE_ENV === 'development') {
-  config.entry.unshift('webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000');
-}
 
 module.exports = config;

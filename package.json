@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server",
+    "build": "NODE_ENV=production webpack -p",
+    "dev": "NODE_ENV=development webpack-dev-server",
     "format": "prettier --write --single-quote --print-width=100 --parser=flow --tab-width=2 \"src/**/*.{js,jsx}\"",
     "watch": "webpack --watch"
   },
@@ -14,6 +14,7 @@
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-hot-loader": "next",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
@@ -45,7 +46,6 @@
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
     "prettier": "^1.6.1",
-    "react-hot-loader": "3.0.0-beta.6",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5",
