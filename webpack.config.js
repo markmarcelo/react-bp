@@ -29,7 +29,17 @@ const config = {
       {
         test: /(\.css|\.sass|\.scss)$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          },
+          'postcss-loader',
+          'sass-loader'
+        ]
       },
       {
         enforce: 'pre',
