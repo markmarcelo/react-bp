@@ -1,5 +1,18 @@
+@font-face {
+  font-family: 'MyWebFont';
+  src: url('../assets/fonts/webfont.eot'); /* IE9 Compat Modes */
+  src: url('../assets/fonts/webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../assets/fonts/webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
 body {
+  font-family: Arial, Helvetica, sans-serif;
   color: gray;
+}
+
+h1 {
+  font-family: 'MyWebFont';
 }
 
 a {

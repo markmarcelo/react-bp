@@ -9,3 +9,4 @@ A lightweight React boilerplate including:
 - PostCSS Autoprefixer
 - Hot Module Replacement (HMR)
 - Prettier
+- webpack 3
